@@ -9,3 +9,9 @@ export const getProducts = async() => {
         }
     })
 }
+
+export const createProduct = async(data: { name: string; description: string; stock: number; status: number }) => {
+    return prisma.product.create({
+        data
+    })
+}
