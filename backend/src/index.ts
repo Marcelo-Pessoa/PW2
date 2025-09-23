@@ -5,8 +5,13 @@ import router from "./router/router"
 const env = getEnv()
 const app = express()
 
-app.use(router)
+// Middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.listen(env.PORT, () => {
-  console.log(`App running on port ${env.PORT}.`)
+// Routes
+app.use("/api", router)
+
+app.listen(env.PORT, 'localhost', () => {
+  console.log(`App running on localhost:${env.PORT}.`)
 })
