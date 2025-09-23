@@ -32,3 +32,8 @@ outputType = "console"
 [[ports]]
 localPort = 3000
 externalPort = 3000
+
+[deployment]
+deploymentTarget = "vm"
+run = ["npm", "run", "start:prod"]
+build = ["npm", "run", "build"]
