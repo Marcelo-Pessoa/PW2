@@ -15,11 +15,35 @@ datasource db {
 }
 
 model Product {
-  id String @id @default(uuid())
+  id String @id @default(uuid()) 
   name String @unique
   description   String
   stock Int
   status    Int
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
+}
+
+model User {
+  id        String    @id @default(uuid()) @db.Char(36)
+  name      String    @db.VarChar(100)
+  email     String    @unique @db.VarChar(100)
+  password  String    @db.Char(60)
+  typeId    Int       @db.TinyInt
+  type      UserType  @relation(fields: [typeId], references: [id])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Usertype {
+  id     Int     @id @db.TinyInt
+  label  String  @db.Char(8)
+  users  User[]
+}
+
+model Session {
+  id String @id
+  sid String @unique
+  data String @db.Text
+  expireAt DateTime 
 }

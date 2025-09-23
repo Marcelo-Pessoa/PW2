@@ -1,5 +1,11 @@
 import { Request, Response } from 'express';
-import { getProducts } from './product.service';
+import { getProducts,
+        createProduct,
+        findProductByName,
+        removeProduct,
+       } from './product.service';
+import { createProductDto } from './product.types'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
 const index = async (req: Request, res: Response) => {
     try {
