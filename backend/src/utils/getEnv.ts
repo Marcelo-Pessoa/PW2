@@ -5,7 +5,7 @@ dotenv.config( {quiet: true })
 
 function getEnv() {
     return cleanEnv(process.env, {
-        PORT: port({ default: 7788 })
+        PORT: port({ default: 3000 })
     })
 }
 

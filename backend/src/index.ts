@@ -12,6 +12,6 @@ app.use(express.urlencoded({ extended: true }))
 // Routes
 app.use("/api", router)
 
-app.listen(env.PORT, 'localhost', () => {
-  console.log(`App running on localhost:${env.PORT}.`)
+app.listen(env.PORT, '0.0.0.0', () => {
+  console.log(`API server running on 0.0.0.0:${env.PORT}`)
 })
