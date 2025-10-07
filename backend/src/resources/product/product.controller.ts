@@ -12,7 +12,7 @@ const index = async (req: Request, res: Response) => {
         const products = await getProducts();
         res.json(products);
     } catch (error) {
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: ReasonPhrases.INTERNAL_SERVER_ERROR });
     }
 };
 
