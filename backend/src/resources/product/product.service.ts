@@ -1,5 +1,5 @@
 import { PrismaClient } from "../../generated/prisma"
-import { createProductDto } from "./product.types"
+import { createProductDto, updateProductDto } from "./product.types"
 
 const prisma = new PrismaClient()
 
@@ -41,12 +41,19 @@ export const findProductByName = async( name: string ) => {
     })
 }
 
-export const updateProduct = async( product: createProductDto, id: string ) => {
-    return prisma.product.update(
-        {data: product}, 
-        {where: {id: id}} );
+export const updateProduct = async( product: updateProductDto, id: string ) => {
+    return prisma.product.update({
+        where: {
+            id: id
+        },
+        data : product
+    });
 }
 
-export const removeProduct = async() => {
-    
+export const removeProduct = async( id: string ) => {
+    return prisma.product.delete({
+        where: {
+            id: id
+        }
+    })
 }
