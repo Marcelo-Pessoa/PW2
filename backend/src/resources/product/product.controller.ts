@@ -17,7 +17,12 @@ const index = async (req: Request, res: Response) => {
 };
 
 const create = async (req: Request, res: Response) => {
-    res.status(501).json({ message: 'Not implemented yet' });
+    const product = req.body as createProductDto;
+    try {
+        if (await )
+    } catch {
+        
+    }
 };
 
 const read = async (req: Request, res: Response) => {

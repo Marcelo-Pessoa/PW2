@@ -5,3 +5,5 @@ export const productSchema = Joi.object().keys({
   price: Joi.number().min(0).required(),
   stock: Joi.number().min(0).integer().required()
 })
+
+export default productSchema;

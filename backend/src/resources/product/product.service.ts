@@ -1,4 +1,5 @@
 import { PrismaClient } from "../../generated/prisma"
+import { createProductDto } from "./product.types"
 
 const prisma = new PrismaClient()
 
@@ -10,8 +11,42 @@ export const getProducts = async() => {
     })
 }
 
-export const createProduct = async(data: { name: string; description: string; stock: number; status: number }) => {
+export const createProduct = async( product: createProductDto ) => {
     return prisma.product.create({
-        data
+        data: product
     })
+}
+
+export const productAlreadyExists = async( name: string ) => {
+    return prisma.product.findFirst({
+        where: {
+            name: name
+        }
+    })
+}
+
+export const getProduct = async( id: string ) => {
+    return prisma.product.findFirst({
+        where: {
+            id: id
+        }
+    })
+}
+
+export const findProductByName = async( name: string ) => {
+    return prisma.product.findFirst({
+        where: {
+            name: name
+        }
+    })
+}
+
+export const updateProduct = async( product: createProductDto, id: string ) => {
+    return prisma.product.update(
+        {data: product}, 
+        {where: {id: id}} );
+}
+
+export const removeProduct = async() => {
+    
 }
