@@ -12,7 +12,12 @@ router.post("/",
             validate(productSchema), 
             productController.create)
 router.get("/:id", productController.read)
-router.put("/:id", productController.update)
-router.delete("/:id", productController.remove)
+router.put("/:id", 
+           checkAuthorization, 
+           validate(productSchema),
+           productController.update)
+router.delete("/:id", 
+              checkAuthorization,
+              productController.remove)
 
 export default router

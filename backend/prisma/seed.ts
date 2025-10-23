@@ -1,5 +1,5 @@
 import { PrismaClient } from './../src/generated/prisma'
-import { UserTypes } from './../src/resources/userType/userType.constants.ts'
+import { UserTypes } from './../src/resources/userType/userType.constants'
 
 const prisma = new PrismaClient()
 
@@ -7,16 +7,18 @@ async function seed() {
   return await prisma.userType.createMany({
     data: [
       { id: UserTypes.admin, label: 'admin' },
-      { name: UserTypes.client, label: 'client' },
+      { id: UserTypes.client, label: 'client' },
     ], skipDuplicates: true
   })
 }
 
 seed()
-  .then( () => {
-    console.log("REgistros Adicionados")
+  .then(async () => {
+    await prisma.$disconnect();
+    console.log("Registros Adicionados")
   })
-  .catch( (e) => {
+  .catch(async (e) => {
     console.error(e)
+    await prisma.$disconnect();
   })
   .finally()

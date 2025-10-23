@@ -34,7 +34,7 @@ export const getProduct = async( id: string ) => {
 }
 
 export const findProductByName = async( name: string ) => {
-    return prisma.product.findFirst({
+    return prisma.product.findMany({
         where: {
             name: name
         }
