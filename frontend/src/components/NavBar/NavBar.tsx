@@ -7,18 +7,18 @@ export function NavBar() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand as={Link} href="https://flowbite-react.com">
-        <Image src="/favicon/svg" width={50} height={50} lassName="mr-3 h-6 sm:h-9" alt="Flowbite React Logo"></Image>
+        <Image src="/favicon/svg" width={50} height={50} className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo"></Image>
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
       </NavbarBrand>
       <NavbarToggle />
       <NavbarCollapse>
-        <NavbarLink href="#" active>
+        <NavbarLink as={Link} href="/" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} href="#">
+        <NavbarLink as={Link} href="/about">
           About
         </NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
+        <NavbarLink as={Link} href="/product/create">Criar Produto</NavbarLink>
         <NavbarLink href="#">Pricing</NavbarLink>
         <NavbarLink href="#">Contact</NavbarLink>
       </NavbarCollapse>

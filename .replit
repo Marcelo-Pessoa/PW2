@@ -4,7 +4,7 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
-packages = ["docker_28"]
+packages = ["docker_28", "u-root-cmds"]
 
 [workflows]
 runButton = "Project"

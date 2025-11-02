@@ -20,5 +20,5 @@ FROM node:22-trixie-slim AS development
 WORKDIR /app
 COPY package*.json .
 ENV NODE_ENV=development
-EXPOSE 3000
+EXPOSE 7788
 CMD ["npm", "run", "dev"]

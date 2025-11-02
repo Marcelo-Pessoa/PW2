@@ -10,7 +10,7 @@ import { getProducts,
 import { createProductDto, updateProductDto } from './product.types'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-const index = async (req: Request, res: Response) => {
+const index = async (res: Response) => {
     try {
         const products = await getProducts();
         res.json(products);
@@ -50,9 +50,10 @@ const read = async (req: Request, res: Response) => {
         schema: { $ref: '#/definitions/Product' }
     }
     */
-    const id = req.params.id
+    const {id} = req.params;
     try {
-        const product = await getProduct(id!);
+        if(!id) return res.status(StatusCodes.BAD_GATEWAY).json(ReasonPhrases.BAD_GATEWAY);
+        const product = await getProduct(id);
         res.json(product);
     } catch (error) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ReasonPhrases.INTERNAL_SERVER_ERROR);
